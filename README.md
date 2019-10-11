@@ -7,7 +7,7 @@
 - Victor Ramirez 
 - Jennifer Mulroy 
 
-Our project is identify patterns in bitcoin trading data to determine what drives price action. We will examine daily volatility, trading volume, and price discovery across various exchanges. 
+Our project is to identify patterns in bitcoin trading data to determine what drives price action. We will examine daily volatility, trading volume, and price discovery across various exchanges. 
  
  Questions to Answer and Research: 
  - Is it a good long term investment or short investment? 
