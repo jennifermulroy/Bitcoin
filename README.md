@@ -1,13 +1,13 @@
 # Project1
 
-## Generating Alpha Trading Bitcoin 
+## What Drives Bitcoin's Price?  
 
 ### Team
 - Manpreet Padam
 - Victor Ramirez 
 - Jennifer Mulroy 
 
-Our project is to identify patterns in bitcoin trading data to determine what drives price action. We will examine daily volatility, trading volume, and price discovery across various exchanges. 
+Our project is to identify patterns in bitcoin trading data to determine what drives the price of Bitcoin. We will perform statistical analysis that will include daily volatility, trading volume, and cumulative returns to find relationships between the data and supply and demand factors. 
  
  Questions to Answer and Research: 
  - Is it a good long term investment or short investment? 
