@@ -1,6 +1,6 @@
 # Project1
 
-## What drives Bitcoin's price?  
+## What Drives Bitcoin's Price?  
 
 ### Team
 - Manpreet Padam
