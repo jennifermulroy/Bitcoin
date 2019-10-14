@@ -34,7 +34,7 @@ class bitcoinanalyzer:
     def calculate_standard_devation(self,dailyreturns,sortascending=True):
         return dailyreturns.std().sort_values(ascending=sortascending)
 
-    def calculate_annulized_standard_devation(self,dailyreturns,workingdays=252,sortascending=True):
+    def calculate_annulized_standard_devation(self,dailyreturns,workingdays=365,sortascending=True):
         return (dailyreturns * np.sqrt(workingdays)).sort_values(ascending=sortascending)
     
     def calculate_rolling_standard_deviation(self,dataframe,daywindow):
@@ -63,7 +63,7 @@ class bitcoinanalyzer:
         return dataframe.ewm(halflife=halflifevalue).std()
     
     def calculate_sharpie_ratio(self,dailyreturns):
-        return (dailyreturns.mean() * 252) / (dailyreturns.std() * np.sqrt(252))
+        return (dailyreturns.mean() * 365) / (dailyreturns.std() * np.sqrt(365))
 
     def calculate_weighted_returns(self,dailyreturns,weights):
         return dailyreturns.dot(weights)
