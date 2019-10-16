@@ -4,48 +4,106 @@ import numpy
 import requests
 import json 
 import tweepy
+from datetime import datetime
+from transactions_type import transactions_type as tt
+from supply_enum import supply_duration as sd
+from address_type import address_type as adtype
 
-#declaring global variables 
-class data_collection:
+class apiservice:
+    #declaring global variables 
     iex_api_id = None
     twitter_api_id = None
-    coincap_url = None
-    glass_node_api = None
-    coin_market_cap_api = None
-    nomics_api = None
-    coin_api = None 
+    glassnode_api_url = None
+    api_key=''
+    
 
-
-#calling the APIs
+    #calling the APIs
     def __init__(self):
-        iex_api_id = os.getenv('IEX_SECRET_TKN')
-        twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
-        coincap_url = "http://api.coincap.io/v2"
-        glass_node_api = os.getenv('GLASSNODE_KEY')
-        coin_market_cap_api = os.getenv('COIN_MARKETCAP_KEY')
-        nomics_api = os.geten('NOMICS_KEY')
-        coin_api = os.getevn("COIN_API_KEY")
+        self.iex_api_id = os.getenv('IEX_SECRET_TKN')
+        self.twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
+        self.api_key = os.getenv('GLASSNODE_KEY')
+        self.glassnode_api_url='https://api.glassnode.com/v1/metrics/'
 
-    def getiex(self):
-        iex_data = requests.get(iex_api_id)
+    def get_supply(self,symbols,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
+        supply_endpoint='current'
+        if duration==sd.Current:
+            supply_endpoint='current'
+        if duration==sd.Active_1d_1w:
+            supply_endpoint='active_1d_1w'
+        if duration==sd.Active_1Y_2Y:
+            supply_endpoint='active_1y_2y'
+        if duration==sd.Active_24h:
+            supply_endpoint='active_24h'
+        if duration==sd.Active_2Y_3Y:
+            supply_endpoint='active_2y_3y'
+        if duration==sd.Active_More_5Y:
+            supply_endpoint='active_more_5y'
+        
+        self.glassnode_api_url+=f'supply/{supply_endpoint}?api_key={self.api_key}'
+
+        if from_date!='' and to_date !='':
+            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
+            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
+            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
+        else:
+            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
+        
+        supply_data=requests.get(self.glassnode_api_url)
+        return supply_data
+
+    def get_Transactions(self,symbols,transactiontype=tt.TransfersVolumeSum,from_date='',to_date='',frequency_interval='24h'):
+        transcation_endpoint='transfers_volume_sum'
+        if transactiontype==tt.TransfersVolumeSum:
+            transcation_endpoint='transfers_volume_sum'
+        if transactiontype==tt.TransfersVolumeAdjustedMean:
+            transcation_endpoint='transfers_volume_adjusted_mean'
+        if transactiontype==tt.TransfersVolumeAdjustedMedian:
+            transcation_endpoint='transfers_volume_adjusted_median'
+        if transactiontype==tt.TransfersVolumeAdjustedSum:
+            transcation_endpoint='transfers_volume_adjusted_sum'
+        if transactiontype==tt.TransfersVolumeMean:
+            transcation_endpoint='transfers_volume_mean'
+        if transactiontype==tt.TransfersVolumeMedian:
+            transcation_endpoint='transfers_volume_median'
+        
+        self.glassnode_api_url+=f'transactions/{transcation_endpoint}?api_key={self.api_key}'
+
+        if from_date!='' and to_date !='':
+            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
+            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
+            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
+        else:
+            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
+        
+        transaction_data=requests.get(self.glassnode_api_url)
+        return transaction_data
+    
+    # Fetch 
+    def get_addresses(self,symbols,addresstype=adtype.Min_10k_Count,from_date='',to_date='',frequency_interval='24h'):
+        address_endpoint='transfers_volume_sum'
+        if addresstype==adtype.Min_10k_Count:
+            address_endpoint='min_10k_count'
+        if addresstype==adtype.Min_Point_1_Count:
+            address_endpoint='min_point_1_count'
+        if addresstype==adtype.Non_Zero_Count:
+            address_endpoint='non_zero_count'
+        
+        self.glassnode_api_url+=f'addresses/{address_endpoint}?api_key={self.api_key}'
+
+        if from_date!='' and to_date !='':
+            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
+            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
+            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
+        else:
+            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
+        
+        address_data=requests.get(self.glassnode_api_url)
+        return address_data
 
     def gettwitter(self):
-        twitter_data = requests.get(twitter_api_id)
+        twitter_data = requests.get(self.twitter_api_id)
 
-    def getcoincap(self)
-        coincap = requests.get(coincap_url)
 
-    def getglassnode(self):
-        glassnode_data = requests.get(glass_node_api)
-
-    def getcoinmarketcap(self):
-        coinmarketcap_data = requests.get(coin_market_cap_api) 
-
-    def getnomics(self:)
-        nomics_data = requests.get(nomics_api)
-
-    def getcoinapi(self):
-        coin_data = requests.get(coin_api)
     
 
         
