@@ -22,20 +22,7 @@ class apiservice:
        self.assign_variables()
 
     def get_supply(self,symbols,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
-        supply_endpoint='current'
-        if duration==sd.Current:
-            supply_endpoint='current'
-        if duration==sd.Active_1d_1w:
-            supply_endpoint='active_1d_1w'
-        if duration==sd.Active_1Y_2Y:
-            supply_endpoint='active_1y_2y'
-        if duration==sd.Active_24h:
-            supply_endpoint='active_24h'
-        if duration==sd.Active_2Y_3Y:
-            supply_endpoint='active_2y_3y'
-        if duration==sd.Active_More_5Y:
-            supply_endpoint='active_more_5y'
-        
+        supply_endpoint=f'{duration.name.lower()}'
         self.glassnode_api_url+=f'supply/{supply_endpoint}?api_key={self.api_key}'
 
         if from_date!='' and to_date !='':
@@ -52,21 +39,8 @@ class apiservice:
         self.assign_variables()
         return df
 
-    def get_Transactions(self,symbols,transactiontype=tt.TransfersVolumeSum,from_date='',to_date='',frequency_interval='24h'):
-        transcation_endpoint='transfers_volume_sum'
-        if transactiontype==tt.TransfersVolumeSum:
-            transcation_endpoint='transfers_volume_sum'
-        if transactiontype==tt.TransfersVolumeAdjustedMean:
-            transcation_endpoint='transfers_volume_adjusted_mean'
-        if transactiontype==tt.TransfersVolumeAdjustedMedian:
-            transcation_endpoint='transfers_volume_adjusted_median'
-        if transactiontype==tt.TransfersVolumeAdjustedSum:
-            transcation_endpoint='transfers_volume_adjusted_sum'
-        if transactiontype==tt.TransfersVolumeMean:
-            transcation_endpoint='transfers_volume_mean'
-        if transactiontype==tt.TransfersVolumeMedian:
-            transcation_endpoint='transfers_volume_median'
-        
+    def get_Transactions(self,symbols,transactiontype=tt.Transfers_Volume_Sum,from_date='',to_date='',frequency_interval='24h'):
+        transcation_endpoint=f'{transactiontype.name.lower()}'
         self.glassnode_api_url+=f'transactions/{transcation_endpoint}?api_key={self.api_key}'
 
         if from_date!='' and to_date !='':
@@ -82,17 +56,9 @@ class apiservice:
         df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
         self.assign_variables()
         return df
-    
-    # Fetch 
+
     def get_addresses(self,symbols,addresstype=adtype.Min_10k_Count,from_date='',to_date='',frequency_interval='24h'):
-        address_endpoint='transfers_volume_sum'
-        if addresstype==adtype.Min_10k_Count:
-            address_endpoint='min_10k_count'
-        if addresstype==adtype.Min_Point_1_Count:
-            address_endpoint='min_point_1_count'
-        if addresstype==adtype.Non_Zero_Count:
-            address_endpoint='non_zero_count'
-        
+        address_endpoint=f'{addresstype.name.lower()}'
         self.glassnode_api_url+=f'addresses/{address_endpoint}?api_key={self.api_key}'
 
         if from_date!='' and to_date !='':
