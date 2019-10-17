@@ -19,12 +19,7 @@ class apiservice:
 
     #calling the APIs
     def __init__(self):
-        self.iex_api_id = os.getenv('IEX_SECRET_TKN')
-        self.twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
-        self.api_key = os.getenv('GLASSNODE_KEY')
-        self.glassnode_api_url='https://api.glassnode.com/v1/metrics/'
-    
-
+       self.assign_variables()
 
     def get_supply(self,symbols,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
         supply_endpoint='current'
@@ -54,6 +49,7 @@ class apiservice:
         df=pd.read_json(supply_data,orient='records')
         df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
         df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        self.assign_variables()
         return df
 
     def get_Transactions(self,symbols,transactiontype=tt.TransfersVolumeSum,from_date='',to_date='',frequency_interval='24h'):
@@ -84,6 +80,7 @@ class apiservice:
         df=pd.read_json(transaction_data,orient='records')
         df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
         df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        self.assign_variables()
         return df
     
     # Fetch 
@@ -109,7 +106,14 @@ class apiservice:
         df=pd.read_json(address_data,orient='records')
         df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
         df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        self.assign_variables()
         return df
 
     def convert_to_datetime(self,unix_timestamp):
         return datetime.fromtimestamp(unix_timestamp)
+
+    def assign_variables(self):
+        self.iex_api_id = os.getenv('IEX_SECRET_TKN')
+        self.twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
+        self.api_key = os.getenv('GLASSNODE_KEY')
+        self.glassnode_api_url='https://api.glassnode.com/v1/metrics/'
