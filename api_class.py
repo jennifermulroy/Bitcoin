@@ -3,7 +3,7 @@ import os
 import numpy
 import requests
 import json 
-import tweepy
+#import tweepy
 from datetime import datetime
 from transactions_type import transactions_type as tt
 from supply_enum import supply_duration as sd
@@ -23,6 +23,8 @@ class apiservice:
         self.twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
         self.api_key = os.getenv('GLASSNODE_KEY')
         self.glassnode_api_url='https://api.glassnode.com/v1/metrics/'
+    
+
 
     def get_supply(self,symbols,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
         supply_endpoint='current'
@@ -48,8 +50,11 @@ class apiservice:
         else:
             self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
         
-        supply_data=requests.get(self.glassnode_api_url)
-        return supply_data
+        supply_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(supply_data,orient='records')
+        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
+        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        return df
 
     def get_Transactions(self,symbols,transactiontype=tt.TransfersVolumeSum,from_date='',to_date='',frequency_interval='24h'):
         transcation_endpoint='transfers_volume_sum'
@@ -75,8 +80,11 @@ class apiservice:
         else:
             self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
         
-        transaction_data=requests.get(self.glassnode_api_url)
-        return transaction_data
+        transaction_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(transaction_data,orient='records')
+        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
+        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        return df
     
     # Fetch 
     def get_addresses(self,symbols,addresstype=adtype.Min_10k_Count,from_date='',to_date='',frequency_interval='24h'):
@@ -97,13 +105,11 @@ class apiservice:
         else:
             self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
         
-        address_data=requests.get(self.glassnode_api_url)
-        return address_data
+        address_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(address_data,orient='records')
+        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
+        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        return df
 
-    def gettwitter(self):
-        twitter_data = requests.get(self.twitter_api_id)
-
-
-    
-
-        
+    def convert_to_datetime(self,unix_timestamp):
+        return datetime.fromtimestamp(unix_timestamp)
