@@ -10,7 +10,7 @@ class GetPrices:
         pass
     
     @classmethod
-    def yahoo(cls,start_date,end_date,ticker_list=''):
+    def yahoo(cls,start_date="",end_date="",ticker_list=''):
 
         """ Gets yahoo price data for a given crypto/currency pair(ie.BTC-USD) within the 
         start and end date period. Returns a dictonary of dfs for each closing price.
@@ -46,22 +46,16 @@ class GetPrices:
 
 class Stats:
     
+    def __init__(self):
+        pass
+    
     @classmethod
-    def beta(cls,tickers=""):
-        
-        #convert DateTime
-        
-        
-       
+    def beta(cls,tickers="",start_date="",end_date=""):
+    
         """ Enter the Stock and Index in order"""
         beta_dict = {}
         
         if len(tickers) == 2:
-            
-#             if start_date  and end_date!= "":
-#                 start_unix = int(datetime.timestamp(pd.to_datetime(start_date)))
-#             if end_date !="":
-#                 end_unix = int(datetime.timestamp(pd.to_datetime(end_date)))
             
             #get prices and returns
             prices = GetPrices.yahoo(start_date,end_date,tickers)
@@ -86,7 +80,43 @@ class Stats:
     
     
     @classmethod
-    def get_all(cls,dataframe,start_date="",end_date="",tickers="",window=""):
+    def rolling_beta(cls,tickers="",window="",start_date="",end_date=""):
+    
+        """ Enter the Stock and Index in order"""
+        rolling_beta_dict = {}
+        
+        if tickers and window is not None:
+            
+            #get prices and returns
+            prices = GetPrices.yahoo(start_date,end_date,tickers)
+            returns = Stats.get_one(prices,'daily returns')
+                
+                
+            for i in window:
+                
+         
+                rolling_variance = returns.iloc[0:,0].rolling(i).var()
+                rolling_beta_dict[f"{tickers[0]}:{i}rolling variance"] = rolling_variance
+
+                rolling_covariance = returns.iloc[0:,0].rolling(i).cov(returns.iloc[0:,1])
+                rolling_beta_dict[f"{tickers[0]}:{i}rolling covariance"] = rolling_covariance
+
+
+                rolling_beta = rolling_covariance / rolling_variance
+                rolling_beta_dict[f"{tickers[0]}:{i}rolling beta"] = rolling_beta
+#                 rolling_beta_dict["Index"] = tickers[1]
+                    
+        else:
+            rolling_beta_dict['No rolling window params passed'] = 'No rolling window params passed'
+
+        #dataframe = pd.DataFrame(rolling_beta_dict,index=[i for i in range(len(rolling_beta_dict.keys()))])
+            
+        return rolling_beta_dict
+    
+
+    
+    @classmethod
+    def get_all(cls,dataframe,tickers='',window=''):
         
         """Runs multiple calc types(see below) for each asset in dataframe. Returns a dictonary of dfs for each calc.
         Returns a dictonary containing all calc types as key and result as value. 
@@ -119,7 +149,9 @@ class Stats:
                     'natural log std':np.log(dataframe/dataframe.shift(1).std()),
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
-                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365)))
+                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
+                    'beta':self.beta(tickers),
+                    'rolling beta':self.rolling_beta(tickers,window)
                     }
 
         return calc_dict
@@ -157,7 +189,9 @@ class Stats:
                     'natural log std':np.log(dataframe/dataframe.shift(1).std()),
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
-                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365)))
+                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
+                    'beta':self.beta(tickers),
+                    'rolling beta':self.rolling_beta(tickers,window)
                     }
 
         if calc_type in calc_dict:
@@ -170,26 +204,3 @@ class Stats:
         return dataframe
 
 
-class Simulations:
-    def __init__(self):
-        pass
-    
-    @classmethod
-    def montecarlo(cls,dataframe,num_simulations,num_trading_days):
-        """always take the most left of any df"""
-        
-        ticker = dataframe.iloc[:,0] 
-        last_price = dataframe.iloc[-1]
-        
-        dataframe = pd.DataFrame()
-        
-        for n in range(num_simulations):
-            simulation_results = [last_price]
-            
-            for i in range(num_trading_days):
-                simulated_price = last_price[-1] * (1 + np.random.normal(ticker.mean(),ticker.std()))
-                dataframe.append(simulated_price)
-            
-            dataframe[f"Simulations{n+1}"] = pd.Series(simulation_results)
-            
-        return dataframe
