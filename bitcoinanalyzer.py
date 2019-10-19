@@ -1,8 +1,20 @@
 import os
 import pandas as pd
 import numpy as np
+from pathlib import Path
 
 class bitcoinanalyzer:
+    ### create data frame from csv file
+    def load_cvs_to_dataframe(self, sourcepath,indexcol='',dropcolumns=[]):
+        csvfile=Path(sourcepath)
+        _df=pd.read_csv(csvfile,infer_datetime_format=True,parse_dates=True)
+        
+        if indexcol!='' :
+            _df.set_index(indexcol,inplace=True)
+
+        if len(dropcolumns)!=0:
+            _df.drop(columns=dropcolumns, inplace=True)
+        return _df
 
     def create_portfolio(self,dataframes):
         self.portfolio=pd.concat(dataframes,axis='columns',join='inner').dropna()
