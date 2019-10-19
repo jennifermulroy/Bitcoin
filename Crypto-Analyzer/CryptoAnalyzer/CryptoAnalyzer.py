@@ -39,9 +39,10 @@ class GetPrices:
 class Stats:
     
     @classmethod
-    def beta(cls,tickers="",window="",start_date="",end_date=""):
+    def beta(cls,tickers=""):
         
         #convert DateTime
+        
         
        
         """ Enter the Stock and Index in order"""
@@ -49,11 +50,13 @@ class Stats:
         
         if len(tickers) == 2:
             
-            start_unix = int(datetime.timestamp(pd.to_datetime(start_date)))
-            end_unix = int(datetime.timestamp(pd.to_datetime(end_date)))
+#             if start_date  and end_date!= "":
+#                 start_unix = int(datetime.timestamp(pd.to_datetime(start_date)))
+#             if end_date !="":
+#                 end_unix = int(datetime.timestamp(pd.to_datetime(end_date)))
             
             #get prices and returns
-            prices = GetPrices.yahoo(tickers,start_date,end_date)
+            prices = GetPrices.yahoo(start_date,end_date,tickers)
             returns = Stats.get_one(prices,'daily returns')
 
             covariance = returns.iloc[0:,0].cov(returns.iloc[0:,1])
@@ -75,43 +78,7 @@ class Stats:
     
     
     @classmethod
-    def rolling_beta(cls,tickers="",start_date="",end_date="",window=""):
-    
-        """ Enter the Stock and Index in order"""
-        rolling_beta_dict = {}
-        
-        if tickers and window is not None:
-            
-            #get prices and returns
-            prices = GetPrices.yahoo(tickers,start_date,end_date)
-            returns = Stats.get_one(prices,'daily returns')
-                
-                
-            for i in window:
-                
-         
-                rolling_variance = returns.iloc[0:,0].rolling(i).var()
-                rolling_beta_dict[f"{tickers[0]}:{i}rolling variance"] = rolling_variance
-
-                rolling_covariance = returns.iloc[0:,0].rolling(i).cov(returns.iloc[0:,1])
-                rolling_beta_dict[f"{tickers[0]}:{i}rolling covariance"] = rolling_covariance
-
-
-                rolling_beta = rolling_covariance / rolling_variance
-                rolling_beta_dict[f"{tickers[0]}:{i}rolling beta"] = rolling_beta
-#                 rolling_beta_dict["Index"] = tickers[1]
-                    
-        else:
-            rolling_beta_dict['No rolling window params passed'] = 'No rolling window params passed'
-
-        #dataframe = pd.DataFrame(rolling_beta_dict,index=[i for i in range(len(rolling_beta_dict.keys()))])
-            
-        return rolling_beta_dict
-    
-
-    
-    @classmethod
-    def get_all(cls,dataframe,tickers='',window=''):
+    def get_all(cls,dataframe,start_date="",end_date="",tickers="",window=""):
         
         """Runs multiple calc types(see below) for each asset in dataframe. Returns a dictonary of dfs for each calc.
         Returns a dictonary containing all calc types as key and result as value. 
@@ -144,9 +111,7 @@ class Stats:
                     'natural log std':np.log(dataframe/dataframe.shift(1).std()),
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
-                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
-                    'beta':cls.beta(tickers),
-                    'rolling beta':cls.rolling_beta(tickers,window)
+                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365)))
                     }
 
         return calc_dict
@@ -184,9 +149,7 @@ class Stats:
                     'natural log std':np.log(dataframe/dataframe.shift(1).std()),
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
-                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
-                    'beta':cls.beta(tickers),
-                    'rolling beta':cls.rolling_beta(tickers,window)
+                    'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365)))
                     }
 
         if calc_type in calc_dict:
