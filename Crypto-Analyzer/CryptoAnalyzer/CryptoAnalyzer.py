@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import pandas_datareader as pdr
 from functools import reduce
+from datetime import datetime
+import time
 
 
 class GetPrices:
@@ -36,19 +38,22 @@ class GetPrices:
 
 class Stats:
     
-    def __init__(self):
-        pass
-    
     @classmethod
-    def beta(cls,tickers="",start_date=start_date,end_date=end_date):
-    
+    def beta(cls,tickers="",window="",start_date="",end_date=""):
+        
+        #convert DateTime
+        
+       
         """ Enter the Stock and Index in order"""
         beta_dict = {}
         
         if len(tickers) == 2:
             
+            start_unix = int(datetime.timestamp(pd.to_datetime(start_date)))
+            end_unix = int(datetime.timestamp(pd.to_datetime(end_date)))
+            
             #get prices and returns
-            prices = GetPrices.yahoo(start_date,end_date,tickers)
+            prices = GetPrices.yahoo(tickers,start_date,end_date)
             returns = Stats.get_one(prices,'daily returns')
 
             covariance = returns.iloc[0:,0].cov(returns.iloc[0:,1])
@@ -70,7 +75,7 @@ class Stats:
     
     
     @classmethod
-    def rolling_beta(cls,tickers="",window="",start_date=start_date,end_date=end_date):
+    def rolling_beta(cls,tickers="",start_date="",end_date="",window=""):
     
         """ Enter the Stock and Index in order"""
         rolling_beta_dict = {}
@@ -78,7 +83,7 @@ class Stats:
         if tickers and window is not None:
             
             #get prices and returns
-            prices = GetPrices.yahoo(start_date,end_date,tickers)
+            prices = GetPrices.yahoo(tickers,start_date,end_date)
             returns = Stats.get_one(prices,'daily returns')
                 
                 
