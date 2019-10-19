@@ -10,7 +10,7 @@ class GetPrices:
         pass
     
     @classmethod
-    def yahoo(cls,start_date="",end_date="",ticker_list=''):
+    def yahoo(cls,start_date,end_date,ticker_list=''):
 
         """ Gets yahoo price data for a given crypto/currency pair(ie.BTC-USD) within the 
         start and end date period. Returns a dictonary of dfs for each closing price.
@@ -33,8 +33,6 @@ class GetPrices:
     @classmethod
     def get_csv():
         pass
-    
-
 
 class Stats:
     
@@ -42,7 +40,7 @@ class Stats:
         pass
     
     @classmethod
-    def beta(cls,tickers="",start_date="",end_date=""):
+    def beta(cls,tickers="",start_date=start_date,end_date=end_date):
     
         """ Enter the Stock and Index in order"""
         beta_dict = {}
@@ -72,7 +70,7 @@ class Stats:
     
     
     @classmethod
-    def rolling_beta(cls,tickers="",window="",start_date="",end_date=""):
+    def rolling_beta(cls,tickers="",window="",start_date=start_date,end_date=end_date):
     
         """ Enter the Stock and Index in order"""
         rolling_beta_dict = {}
@@ -142,8 +140,8 @@ class Stats:
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
                     'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
-                    'beta':self.beta(tickers),
-                    'rolling beta':self.rolling_beta(tickers,window)
+                    'beta':cls.beta(tickers),
+                    'rolling beta':cls.rolling_beta(tickers,window)
                     }
 
         return calc_dict
@@ -182,8 +180,8 @@ class Stats:
                     'correlation':dataframe.pct_change().corr(),
                     'sharpe ratio':((dataframe.pct_change().mean() * 252)/(dataframe.std() * np.sqrt(252))),
                     'sharpe ratio crypto':((dataframe.pct_change().mean() * 365)/(dataframe.std() * np.sqrt(365))),
-                    'beta':self.beta(tickers),
-                    'rolling beta':self.rolling_beta(tickers,window)
+                    'beta':cls.beta(tickers),
+                    'rolling beta':cls.rolling_beta(tickers,window)
                     }
 
         if calc_type in calc_dict:
@@ -196,3 +194,26 @@ class Stats:
         return dataframe
 
 
+class Simulations:
+    def __init__(self):
+        pass
+    
+    @classmethod
+    def montecarlo(cls,dataframe,num_simulations,num_trading_days):
+        """always take the most left of any df"""
+        
+        ticker = dataframe.iloc[:,0] 
+        last_price = dataframe.iloc[-1]
+        
+        dataframe = pd.DataFrame()
+        
+        for n in range(num_simulations):
+            simulation_results = [last_price]
+            
+            for i in range(num_trading_days):
+                simulated_price = last_price[-1] * (1 + np.random.normal(ticker.mean(),ticker.std()))
+                dataframe.append(simulated_price)
+            
+            dataframe[f"Simulations{n+1}"] = pd.Series(simulation_results)
+            
+        return dataframe
