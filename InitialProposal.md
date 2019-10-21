@@ -11,7 +11,7 @@ Our project is to identify patterns in bitcoin trading data to determine what dr
  
  Questions to Answer and Research: 
  - Is it a good long term investment or short investment? 
- - Can we apply traditional market statistic analysis on crytpo trading data? 
+ - Can we apply traditional market statistical analysis on crytpo trading data? 
  - How will we determine which datasets will provide the most value to the analysis objective? 
  
  Datasets to explore:
