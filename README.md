@@ -28,13 +28,55 @@ Currency is a store of value and shouldn't appreicate over time. Comparing the p
  
  ![AMG_histogram](AMD_daily_returns_histogram.png)
  
- #### How does Bitcoin compare against other risky asset classes? 
+ #### 3. How does Bitcoin compare against other risky asset classes? 
 
-We compared Bitcoin to the S&P500 ETF, SPY
+We compared Bitcoin to the SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), US Dollar/USDX - Index, Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD).
 We looked at daily volatility, correlation, and the sharpe ratios on a five year, three year, and one year return basis from 10/1/2019.
 We also carved out the period Bitcoin reached its all-time high in Dec 2017
 
 Bitcoin's Sortino Ratio: 0.0879 from inception 
 
-Daily Volatility over the last five years
+Daily volatility, correlation, and sharpe ratios over the last five years
+
+ ![five_year_daily_vol](daily_volatility_five.png)
+ 
+ ![five_year_cor](correlation_five_heatmap.png)
+
+![five_year_sharpe](sharpe_five_plot.png)
+
+Daily volatility, correlation, and sharpe ratios over the last three years
+
+ 
+ ![three_year_daily_vol](daily_volatility_three.png)
+ 
+ ![three_year_cor](correlation_three_heatmap.png)
+ 
+ ![three_year_sharpe](sharpe_three_plot.png)
+
+ 
+Daily volatility, correlation, and sharpe ratios over the last year
+
+ 
+ ![One_year_daily_vol](daily_volatility_one.png)
+ 
+ ![one_year_cor](correlation_one_heatmap.png)
+  
+ ![One_year_sharpe](sharpe_one_plot.png)
+
+Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price period: 10/1/2017-10/1/2018
+
+ 
+ ![Peak_year_daily_vol](daily_volatility_peak.png)
+
+ ![Peak_year_cor](correlation_peak_heatmap.png)
+  
+ ![Peak_year_sharpe](sharpe_peak_plot.png)
+
+ #### 4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
+ 
+ #### 5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
+ 
+ We ran a monte carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days
+ 
+ 
 
