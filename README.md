@@ -12,8 +12,8 @@
 
 Currency is a store of value and shouldn't appreicate over time. Comparing the price chart of Bitcoin to the S&P500, Bitcoin has signficiantly appreciated in value similar to the equity market.  
 
-![BTC_price_chart](Images/BTC_price_chart_inception.png)
-![SPY_price_chart](Images/SPY_price_chart_inception.png)
+![BTC_price_chart](Images/BTC_price chart_inception.png)
+![SPY_price_chart](Images/SPY_price chart_inception.png)
 
  #### 2. Can we apply traditional statistical analysis used in financial data to Bitcoin's trading history? 
  
