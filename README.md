@@ -1,5 +1,5 @@
 # CryptoAnalyzer 
-  ## Data Analysis on Bitcoin 
+  ## Data Analysis on Bitcoin Trading History 
 
 ### In this analysis, we sought to answer these questions: 
   1. What is Bitcoin? Is it an asset or currency? 
