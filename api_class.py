@@ -2,8 +2,7 @@ import pandas as pd
 import os
 import numpy
 import requests
-import json 
-import tweepy
+import json
 from datetime import datetime
 from transactions_type import transactions_type as tt
 from supply_enum import supply_duration as sd
@@ -15,95 +14,133 @@ class apiservice:
     twitter_api_id = None
     glassnode_api_url = None
     api_key=''
-    
+    from_date_unix=0
+    to_date_unix=0
 
     #calling the APIs
     def __init__(self):
+       self.assign_variables()
+
+    def get_supply(self,symbol,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
+        supply_endpoint=f'{duration.name.lower()}'
+        
+        self.glassnode_api_url+=f'supply/{supply_endpoint}?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+        
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+                
+        supply_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(supply_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+
+    def get_transactions(self,symbol,transactiontype=tt.Transfers_Volume_Sum,from_date='',to_date='',frequency_interval='24h'):
+        transcation_endpoint=f'{transactiontype.name.lower()}'
+        self.glassnode_api_url+=f'transactions/{transcation_endpoint}?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+        
+        transaction_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(transaction_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+
+    def get_addresses(self,symbol,addresstype=adtype.Min_10k_Count,from_date='',to_date='',frequency_interval='24h'):
+        address_endpoint=f'{addresstype.name.lower()}'
+        self.glassnode_api_url+=f'addresses/{address_endpoint}?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+        
+        address_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(address_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+
+    def get_marketcap(self,symbol,from_date='',to_date='',frequency_interval='24h'):
+        self.glassnode_api_url+=f'market/marketcap_usd?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+        
+        market_cap_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(market_cap_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+
+    def get_spentoutputprofitratio(self,symbol,from_date='',to_date='',frequency_interval='24h'):
+        self.glassnode_api_url+=f'indicators/sopr?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+        
+        market_cap_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(market_cap_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+
+    def get_nvtratio(self,symbol,from_date='',to_date='',frequency_interval='24h'):
+        self.glassnode_api_url+=f'indicators/nvt?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
+
+        if from_date != '' :
+            self.from_date_unix=int(datetime.timestamp(pd.to_datetime(from_date)))
+            self.glassnode_api_url += f'&s={self.from_date_unix}'
+        if to_date != '' :
+            self.to_date_unix=int(datetime.timestamp(pd.to_datetime(to_date)))
+            self.glassnode_api_url += f'&u={self.to_date_unix}'
+        
+        market_cap_data=requests.get(self.glassnode_api_url).content
+        df=pd.read_json(market_cap_data,orient='records')
+        df['Symbol']=symbol
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
+        self.assign_variables()
+        return df
+    
+    def convert_to_datetime(self,unix_timestamp):
+        dt= datetime.fromtimestamp(unix_timestamp)
+        return dt.date()
+
+    def assign_variables(self):
         self.iex_api_id = os.getenv('IEX_SECRET_TKN')
         self.twitter_api_id = os.getenv('TWITTER_SECRET_KEY, TWITTER_KEY')
         self.api_key = os.getenv('GLASSNODE_KEY')
         self.glassnode_api_url='https://api.glassnode.com/v1/metrics/'
-
-    def get_supply(self,symbols,duration=sd.Current,from_date='',to_date='',frequency_interval='24h'):
-        supply_endpoint='current'
-        if duration==sd.Current:
-            supply_endpoint='current'
-        if duration==sd.Active_1d_1w:
-            supply_endpoint='active_1d_1w'
-        if duration==sd.Active_1Y_2Y:
-            supply_endpoint='active_1y_2y'
-        if duration==sd.Active_24h:
-            supply_endpoint='active_24h'
-        if duration==sd.Active_2Y_3Y:
-            supply_endpoint='active_2y_3y'
-        if duration==sd.Active_More_5Y:
-            supply_endpoint='active_more_5y'
-        
-        self.glassnode_api_url+=f'supply/{supply_endpoint}?api_key={self.api_key}'
-
-        if from_date!='' and to_date !='':
-            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
-            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
-            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
-        else:
-            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
-        
-        supply_data=requests.get(self.glassnode_api_url)
-        return supply_data
-
-    def get_Transactions(self,symbols,transactiontype=tt.TransfersVolumeSum,from_date='',to_date='',frequency_interval='24h'):
-        transcation_endpoint='transfers_volume_sum'
-        if transactiontype==tt.TransfersVolumeSum:
-            transcation_endpoint='transfers_volume_sum'
-        if transactiontype==tt.TransfersVolumeAdjustedMean:
-            transcation_endpoint='transfers_volume_adjusted_mean'
-        if transactiontype==tt.TransfersVolumeAdjustedMedian:
-            transcation_endpoint='transfers_volume_adjusted_median'
-        if transactiontype==tt.TransfersVolumeAdjustedSum:
-            transcation_endpoint='transfers_volume_adjusted_sum'
-        if transactiontype==tt.TransfersVolumeMean:
-            transcation_endpoint='transfers_volume_mean'
-        if transactiontype==tt.TransfersVolumeMedian:
-            transcation_endpoint='transfers_volume_median'
-        
-        self.glassnode_api_url+=f'transactions/{transcation_endpoint}?api_key={self.api_key}'
-
-        if from_date!='' and to_date !='':
-            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
-            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
-            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
-        else:
-            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
-        
-        transaction_data=requests.get(self.glassnode_api_url)
-        return transaction_data
-    
-    # Fetch 
-    def get_addresses(self,symbols,addresstype=adtype.Min_10k_Count,from_date='',to_date='',frequency_interval='24h'):
-        address_endpoint='transfers_volume_sum'
-        if addresstype==adtype.Min_10k_Count:
-            address_endpoint='min_10k_count'
-        if addresstype==adtype.Min_Point_1_Count:
-            address_endpoint='min_point_1_count'
-        if addresstype==adtype.Non_Zero_Count:
-            address_endpoint='non_zero_count'
-        
-        self.glassnode_api_url+=f'addresses/{address_endpoint}?api_key={self.api_key}'
-
-        if from_date!='' and to_date !='':
-            from_date_unix=datetime.timestamp(pd.to_datetime(from_date))
-            to_date_unix=datetime.timestamp(pd.to_datetime(to_date))
-            self.glassnode_api_url+=f'&a={symbols}&s={from_date_unix}&u={to_date_unix}&i={frequency_interval}'
-        else:
-            self.glassnode_api_url+=f'&a={symbols}&i={frequency_interval}'
-        
-        address_data=requests.get(self.glassnode_api_url)
-        return address_data
-
-    def gettwitter(self):
-        twitter_data = requests.get(self.twitter_api_id)
-
-
-    
-
-        
+        self.to_date_unix=0
+        self.from_date_unix=0
