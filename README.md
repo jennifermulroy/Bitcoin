@@ -1,7 +1,7 @@
 # CryptoAnalyzer 
   ## Analysis on Bitcoin Trading History 
 
-### In this analysis, we sought to answer these questions: 
+### Questions explored in this analysis: 
   1. What is Bitcoin? Is it an asset or currency? 
   2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
   3. How does Bitcoin compare against other risky asset classes? 
