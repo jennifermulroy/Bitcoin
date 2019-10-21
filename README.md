@@ -2,13 +2,16 @@
   ## Analysis on Bitcoin Trading History 
 
 ### Questions explored in this analysis: 
-  1. What is Bitcoin? Is it an asset or currency? 
+  1. Does bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
   2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
   3. How does Bitcoin compare against other risky asset classes? 
   4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
   5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
 
-#### 1. What is Bitcoin, is it an asset or currency?
+#### 1. Does bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
+ List: 
+ 1) annualized STD of the six data series 
+ 2) list the annualized returns of the six asset classes 
 
 Currency is a store of value and shouldn't appreicate over time. Comparing the price chart of Bitcoin to the S&P500, Bitcoin has signficiantly appreciated in value similar to the equity market.  
 
