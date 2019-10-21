@@ -22,11 +22,11 @@ Currency is a store of value and shouldn't appreicate over time. Comparing the p
  
  ![BTC_daily_returns](Images/Daily_returns_BTC_inception.png)
  
- ![BTC_histogram](BTC_histogram_dailyreturns.png)
+ ![BTC_histogram](Images/BTC_histogram_dailyreturns.png)
  
  ![ETH_daily_returns](Images/ETH_daily_returns_histogram.png)
  
- ![AMG_histogram](AMD_daily_returns_histogram.png)
+ ![AMG_histogram](Images/AMD_daily_returns_histogram.png)
  
  #### 3. How does Bitcoin compare against other risky asset classes? 
 
@@ -38,39 +38,39 @@ Bitcoin's Sortino Ratio: 0.0879 from inception
 
 Daily volatility, correlation, and sharpe ratios over the last five years
 
- ![five_year_daily_vol](daily_volatility_five.png)
+ ![five_year_daily_vol](Images/daily_volatility_five.png)
  
- ![five_year_cor](correlation_five_heatmap.png)
+ ![five_year_cor](Images/correlation_five_heatmap.png)
 
-![five_year_sharpe](sharpe_five_plot.png)
+![five_year_sharpe](Images/sharpe_five_plot.png)
 
 Daily volatility, correlation, and sharpe ratios over the last three years
 
  
- ![three_year_daily_vol](daily_volatility_three.png)
+ ![three_year_daily_vol](Images/daily_volatility_three.png)
  
- ![three_year_cor](correlation_three_heatmap.png)
+ ![three_year_cor](Images/correlation_three_heatmap.png)
  
- ![three_year_sharpe](sharpe_three_plot.png)
+ ![three_year_sharpe](Images/sharpe_three_plot.png)
 
  
 Daily volatility, correlation, and sharpe ratios over the last year
 
  
- ![One_year_daily_vol](daily_volatility_one.png)
+ ![One_year_daily_vol](Images/daily_volatility_one.png)
  
- ![one_year_cor](correlation_one_heatmap.png)
+ ![one_year_cor](Images/correlation_one_heatmap.png)
   
- ![One_year_sharpe](sharpe_one_plot.png)
+ ![One_year_sharpe](Images/sharpe_one_plot.png)
 
 Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price period: 10/1/2017-10/1/2018
 
  
- ![Peak_year_daily_vol](daily_volatility_peak.png)
+ ![Peak_year_daily_vol](Images/daily_volatility_peak.png)
 
- ![Peak_year_cor](correlation_peak_heatmap.png)
+ ![Peak_year_cor](Images/correlation_peak_heatmap.png)
   
- ![Peak_year_sharpe](sharpe_peak_plot.png)
+ ![Peak_year_sharpe](Images/sharpe_peak_plot.png)
 
  #### 4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
  
@@ -78,9 +78,9 @@ Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price per
  
 We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days, using Bitcoin's five year average daily returns and five year standard deviation of returns. There is a 95% chance that an initial investment of $10,000 in Bitcoin over the next 365 trading days will end within the range of $4,330.64 and $78,209.97 
 
-![Monte_price](Monte_BTC_price.png)
+![Monte_price](Images/Monte_BTC_price.png)
 
-![Monte_price](Monte_BTC_confidence_interval_plot.png)
+![Monte_price](Images/Monte_BTC_confidence_interval_plot.png)
 
 We ran a Monte Carlo simulation for a diversified portfolio with Bitcoin and without to compare a five year return trajectory. 
 
