@@ -76,7 +76,18 @@ Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price per
  
  #### 5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
  
- We ran a monte carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days
- 
+We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days, using Bitcoin's five year average daily returns and five year standard deviation of returns. There is a 95% chance that an initial investment of $10,000 in Bitcoin over the next 365 trading days will end within the range of $4,330.64 and $78,209.97 
+
+![Monte_price](Monte_BTC_price.png)
+
+![Monte_price](Monte_BTC_confidence_interval_plot.png)
+
+We ran a Monte Carlo simulation for a diversified portfolio with Bitcoin and without to compare a five year return trajectory. 
+
+Given an initial investment of $20,000, in an equally weighted portfolio of Bitcoin, SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD), the expected portfolio return in dollars at the 10th percentile: $45,950.42, at the 50th percentile $58,741.36, and at the 90th percentile: $76,136.19
+
+Given the same initial investment of $20,000, in an equally weighted portfolio of the same assets without Bitcoin, the expected portfolio return in dollars at the 10th percentile: $38,122.49, at the 50th percentile $41,640.88, and at the 90th percentile: $45,503.43
+
+In conclusion, Bitcoin has the potential to significantly increase in value over time. It is uncorrelated with other risky assets and provides diversification to a portfolio. And based on Monte Carlo simulations, if added to a diversfied portfolio can provide additional returns. 
  
 
