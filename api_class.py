@@ -36,12 +36,12 @@ class apiservice:
         supply_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(supply_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'Date','v':'Amount'},inplace=True)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
         df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
 
-    def get_Transactions(self,symbol,transactiontype=tt.Transfers_Volume_Sum,from_date='',to_date='',frequency_interval='24h'):
+    def get_transactions(self,symbol,transactiontype=tt.Transfers_Volume_Sum,from_date='',to_date='',frequency_interval='24h'):
         transcation_endpoint=f'{transactiontype.name.lower()}'
         self.glassnode_api_url+=f'transactions/{transcation_endpoint}?api_key={self.api_key}&a={symbol}&i={frequency_interval}'
 
@@ -55,8 +55,8 @@ class apiservice:
         transaction_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(transaction_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
-        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
 
@@ -74,8 +74,8 @@ class apiservice:
         address_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(address_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
-        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
 
@@ -92,8 +92,8 @@ class apiservice:
         market_cap_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(market_cap_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
-        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
 
@@ -110,8 +110,8 @@ class apiservice:
         market_cap_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(market_cap_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
-        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
 
@@ -128,8 +128,8 @@ class apiservice:
         market_cap_data=requests.get(self.glassnode_api_url).content
         df=pd.read_json(market_cap_data,orient='records')
         df['Symbol']=symbol
-        df.rename(columns={'t':'DateTime','v':'Amount'},inplace=True)
-        df['DateTime']=df.apply(lambda x: self.convert_to_datetime(x['DateTime']),axis=1)
+        df.rename(columns={'t':'Date','v':'Value'},inplace=True)
+        df['Date']=df.apply(lambda x: self.convert_to_datetime(x['Date']),axis=1)
         self.assign_variables()
         return df
     
