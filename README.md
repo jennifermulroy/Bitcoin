@@ -9,14 +9,16 @@
   5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
 
 #### 1. Does bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
- List: 
- 1) annualized STD of the six data series 
- 2) list the annualized returns of the six asset classes 
+ 
+ Bitcoin's price history has been extremely volatile; in fact, the most volatile of our selected asset classes. Bitcoin's daily price movements are so volatile they are six times more volatile than the equities which are considered at the higher end of the risk spectrum of risky assets. Conversely, currencies should not necessarily appreciate over time; but most importantly, should be stable over time. currency should be a store of value and a unit of transaction with its most prized attributed being price stable over time. 
+ 
+ ![annualized returns and std](Images/annualized_returns_std.png)
 
-Currency is a store of value and shouldn't appreicate over time. Comparing the price chart of Bitcoin to the S&P500, Bitcoin has signficiantly appreciated in value similar to the equity market.  
+  
 
 ![BTC_price_chart](Images/BTC_price_chart_inception.png)
 ![SPY_price_chart](Images/SPY_price_chart_inception.png)
+![USD_price_chart](Images/USD_price_chart_inception.png)
 
  #### 2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history? 
  
