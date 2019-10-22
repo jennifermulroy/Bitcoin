@@ -40,10 +40,10 @@ Based on the plot visuals, we can assume Bitcoin follows a normal distribution a
  #### 3. How does Bitoin’s return and risk profile compare to other risky assets?
 
 We compared Bitcoin to the SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), US Dollar/USDX - Index, Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD).
-We looked at daily volatility, correlation, and the sharpe ratios on a five year, three year, and one year return basis from 10/1/2019. We also looked at the period from 10/1/2017-10/1/2018 when Bitcoin's price had its fastest rate of appreciation and pullback in price.  
+We looked at daily volatility and the sharpe ratios on a five year, three year, and one year return basis from 10/1/2019. We also looked at the period from 10/1/2017-10/1/2018 when Bitcoin's price had its fastest rate of appreciation and pullback in price.  
 
 Observations:
-Bitcoin’s return profile has shown some superior absolute returns and risk-adjusted returns since inception and over some of our medium-term observation periods.  However – caveat emptor - as the data series had displayed a parabolic-like price appreciation in earlier years and appears to have been displaying a much different trend following its price peak. 
+Bitcoin’s return profile has shown superior absolute returns and risk-adjusted returns since inception and over some of our medium-term observation periods.  However – caveat emptor - as the data series had displayed a parabolic-like price appreciation in earlier years and appears to have been displaying a much different trend following its price peak. 
 
 Conclusion:
 Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis.  
@@ -112,8 +112,6 @@ Correlation during Bitcoin's peak price period: 10/1/2017-10/1/2018
  
 Observations:
 We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days, using Bitcoin's five year average daily returns and five year standard deviation of returns. There is a 95% chance that an initial investment of $10,000 in Bitcoin over the next 365 trading days will end within the range of $4,330.64 and $78,209.97.  This would represent a 1-yr forward return as low as negative 56% and as high as positive 682%.
-
- We ran a Monte Carlo simulation for a diversified portfolio with Bitcoin and without to compare a five year return trajectory.
 
 
 ![Monte_price](Images/Monte_BTC_price.png)
