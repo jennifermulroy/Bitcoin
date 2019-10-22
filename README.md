@@ -2,13 +2,13 @@
   ## Analysis on Bitcoin Trading History 
 
 ### Questions explored in this analysis: 
-  1. Does bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
+  1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
   2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
   3. How does Bitcoin compare against other risky asset classes? 
   4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
   5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
 
-#### 1. Does bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
+#### 1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
  
  Bitcoin's price history has been extremely volatile; in fact, the most volatile of our selected asset classes. Bitcoin's daily price movements are so volatile they are six times more volatile than the equities which are considered at the higher end of the risk spectrum of risky assets. Conversely, currencies should not necessarily appreciate over time; but most importantly, should be stable over time. currency should be a store of value and a unit of transaction with its most prized attributed being price stable over time. 
  
