@@ -12,7 +12,7 @@
 
 #### 1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
  
- Bitcoin's price history has been extremely volatile; in fact, the most volatile of our selected asset classes. Bitcoin's daily price movements are so volatile they are six times more volatile than the equities which are considered at the higher end of the risk spectrum of risky assets. Conversely, currencies should not necessarily appreciate over time; but most importantly, should be stable over time. currency should be a store of value and a unit of transaction with its most prized attributed being price stable over time. 
+ Bitcoin's price history has been extremely volatile; in fact, the most volatile of our selected asset classes. Bitcoin's daily price movements are so volatile they are six times more volatile than the equities which are considered at the higher end of the risk spectrum of risky assets. Conversely, currencies should not necessarily appreciate over time; but most importantly, should be stable over time. Currency should be a store of value and a unit of transaction with its most prized attributed being price stable over time. 
  
  ![annualized returns and std](Images/annualized_returns_std.png)
 
