@@ -4,7 +4,7 @@
 ### Questions explored in this analysis: 
   1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
   2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
-  3. How does Bitcoin compare against other risky asset classes? 
+  3. How does Bitoin’s return and risk profile compare to other risky assets?  
   4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
   5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
 
@@ -36,13 +36,17 @@ Based on the plot visuals, we can assume Bitcoin follows a normal distribution a
  
  ![AMG_histogram](Images/AMD_daily_returns_histogram.png)
  
- #### 3. How does Bitcoin compare against other risky asset classes? 
+ #### 3. How does Bitoin’s return and risk profile compare to other risky assets?
 
 We compared Bitcoin to the SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), US Dollar/USDX - Index, Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD).
-We looked at daily volatility, correlation, and the sharpe ratios on a five year, three year, and one year return basis from 10/1/2019.
-We also carved out the period Bitcoin reached its all-time high in Dec 2017
+We looked at daily volatility, correlation, and the sharpe ratios on a five year, three year, and one year return basis from 10/1/2019. We also looked at the period from 10/1/2017-10/1/2018 when Bitcoin's price had its fastest rate of appreciation and pullback in price.  
 
-Bitcoin's Sortino Ratio: 0.0879 from inception 
+Observations:
+Bitcoin’s return profile has shown some superior absolute returns and risk-adjusted returns since inception and over some of our medium-term observation periods.  However – caveat emptor - as the data series had displayed a parabolic-like price appreciation in earlier years and appears to have been displaying a much different trend following its price peak. 
+
+Concluion:
+Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis.  
+
 
 Daily volatility, correlation, and sharpe ratios over the last five years
 
@@ -51,6 +55,7 @@ Daily volatility, correlation, and sharpe ratios over the last five years
  ![five_year_cor](Images/correlation_five_heatmap.png)
 
 ![five_year_sharpe](Images/sharpe_five_plot.png)
+
 
 Daily volatility, correlation, and sharpe ratios over the last three years
 
@@ -79,6 +84,7 @@ Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price per
  ![Peak_year_cor](Images/correlation_peak_heatmap.png)
   
  ![Peak_year_sharpe](Images/sharpe_peak_plot.png)
+ 
 
  #### 4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
  
