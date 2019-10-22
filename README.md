@@ -7,7 +7,7 @@
   3. How does Bitoin’s return and risk profile compare to other risky assets?  
   4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor?
   5. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
-  6. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
+  6. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
 
 #### 1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
  
@@ -108,9 +108,13 @@ Correlation during Bitcoin's peak price period: 10/1/2017-10/1/2018
 ![Peak_year_cor](Images/correlation_peak_heatmap.png)
 
  
- #### 5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
+ #### 6. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
  
-We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days, using Bitcoin's five year average daily returns and five year standard deviation of returns. There is a 95% chance that an initial investment of $10,000 in Bitcoin over the next 365 trading days will end within the range of $4,330.64 and $78,209.97 
+Observations:
+We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the next 365 trading days, using Bitcoin's five year average daily returns and five year standard deviation of returns. There is a 95% chance that an initial investment of $10,000 in Bitcoin over the next 365 trading days will end within the range of $4,330.64 and $78,209.97.  This would represent a 1-yr forward return as low as negative 56% and as high as positive 682%.
+
+ We ran a Monte Carlo simulation for a diversified portfolio with Bitcoin and without to compare a five year return trajectory.
+
 
 ![Monte_price](Images/Monte_BTC_price.png)
 
@@ -118,10 +122,13 @@ We ran a Monte Carlo simulation to forecast Bitcoin's price trajectory over the 
 
 We ran a Monte Carlo simulation for a diversified portfolio with Bitcoin and without to compare a five year return trajectory. 
 
-Given an initial investment of $20,000, in an equally weighted portfolio of Bitcoin, SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD), the expected portfolio return in dollars at the 10th percentile: $45,950.42, at the 50th percentile $58,741.36, and at the 90th percentile: $76,136.19
+Given an initial investment of $20,000, in an equally weighted portfolio of Bitcoin, SPDR S&P 500 ETF (SPY), iShares Core U.S. Aggregate Bond ETF (AGG), Bloomberg Commodity Index Total Return ETN (DJCI), and SPDR Gold Shares (GLD), the expected portfolio return in dollars at the 10th percentile: $45,950.42, at the 50th percentile $58,741.36, and at the 90th percentile: $76,136.19  
 
-Given the same initial investment of $20,000, in an equally weighted portfolio of the same assets without Bitcoin, the expected portfolio return in dollars at the 10th percentile: $38,122.49, at the 50th percentile $41,640.88, and at the 90th percentile: $45,503.43
+Given the same initial investment of $20,000, in an equally weighted portfolio of the same assets without Bitcoin, the expected portfolio return in dollars at the 10th percentile: $38,122.49, at the 50th percentile $41,640.88, and at the 90th percentile: $45,503.43, respectively.
 
-In conclusion, Bitcoin has the potential to significantly increase in value over time. It is uncorrelated with other risky assets and provides diversification to a portfolio. And based on Monte Carlo simulations, if added to a diversfied portfolio can potentially provide additional returns. 
+
+Conclusion:
+In conclusion, Bitcoin has the potential to significantly increase in value over time. It is uncorrelated with other risky assets and provides diversification to a portfolio. And based on Monte Carlo simulations, if added to a portfolio of other risky assets, it can augment returns.  However, it has been a very volatile data series since inception and its future carries a high degree of uncertainty.
+
  
 
