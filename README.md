@@ -131,4 +131,41 @@ Conclusion:
 In conclusion, Bitcoin has the potential to significantly increase in value over time. It is uncorrelated with other risky assets and provides diversification to a portfolio. And based on Monte Carlo simulations, if added to a portfolio of other risky assets, it can augment returns.  However, it has been a very volatile data series since inception and its future carries a high degree of uncertainty.
 
  
+#### 7. Factors that may affect investor sentiment on BitCoin
+
+Unlike traditional currencies bitcoin is not influenced by monetary policy, inflation rates and other ecomonic metrics that would otherwise influence value of currency. The following factors do influence the bitcoin prices
+
+  1.***Bitcoin Supply*** : It is a known fact that Bitcoin supply is capped at 21 million, once it is reached no more bitcoin will be mined. As of January 2017 80 % of the supply is already available. Once the cap is reached then it's value will be determined on how popular and attractive other cryptocurrencies will be.
+
+ ![Current_Supply](Images/Current_BTC_Supply.png)
+ 
+ ![Active_Supply](Images/Active_BTC_Supply.png)
+
+ 2.***Volume***:
+
+ ![Total_Volume](Images/Volume_Total.png)
+
+ ![Volume_Mean](Images/Volume_Mean.png)
+
+ ![Volume_Median](Images/Volume_median.png)
+
+ 3.***Addresses***:
+
+ ![BTC_Addresses](Images/addresses.png)
+
+ ![Min_10K](Images/Address_Min_10K.png)
+
+ 4.***Spent Output Profit Ratio***
+
+ ![SOPR](Images/BTC_SOPR.png)
+
+ 5.***Network Value to Transactions Ratio***
+
+ ![NVT_Ratio](Images/BTC_NVT_Ratio.png)
+
+ 6.***Market Cap***
+ 
+ ![Market_Cap](Images/BTC_Market_Cap.png)
+
+As the amount of bitcoin being awarded has decreased, the difficulty of problem has gone up hence it is becoming difficult and intensive to mine coin. There also has been a surge in transaction fees after intreset created by the media. This has aided in the cyrptocurrency as a store of value. The scalability issue has also been a pain point. The bitcoin software has a limitation of processing only 3 transactions per second. This wasn't a concern when the demand was small but this limitation will push the investors to other competitive cryptocurrencies.
 
