@@ -22,8 +22,11 @@
 
  #### 2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history? 
  
- In stock market analysis, a normal distribution of returns is assumed. We ran a visual plot of Bitcoin's daily returns since July 2010 and compared it against the S&P500, and a highly volatile semiconductor stock, AMD. 
- Based on the plot visuals, we can assume Bitcoin follows a normal distribution and therefore, can apply traditional statistical analysis.
+Observations:
+In securities analysis, a normal distribution of returns is assumed and sought in order to draw conclusions with a reasonable degree of confidence. We ran a visual plot of Bitcoin's daily returns since July 2010 and compared it against the S&P500, and a highly volatile semiconductor stock, AMD. 
+
+Conclusion:
+Based on the plot visuals, we can assume Bitcoin follows a normal distribution and therefore, can be analyzed with traditional statistical analysis.
  
  ![BTC_daily_returns](Images/Daily_returns_BTC_inception.png)
  
