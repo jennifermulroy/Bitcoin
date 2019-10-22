@@ -4,7 +4,7 @@
 ### Questions explored in this analysis: 
   1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
   2. Is it possible to apply traditional statistical analysis used in analyzing financial security price data series to Bitcoin's trading history?
-  3. How does Bitoin’s return and risk profile compare to other risky assets?  
+  3. How does Bitcoin’s return and risk profile compare to other risky assets?  
   4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor?
   5. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
   6. Factors that may affect investor sentiment on Bitcoin
