@@ -6,8 +6,9 @@
   2. Is it possible to apply traditional statistical analysis used in analyzing financial security price data series to Bitcoin's trading history?
   3. How does Bitoin’s return and risk profile compare to other risky assets?  
   4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor?
-  5. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
-  6. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
+  5. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
+  6. Factors that may affect investor sentiment on Bitcoin
+
 
 #### 1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
  
@@ -131,7 +132,7 @@ Conclusion:
 In conclusion, Bitcoin has the potential to significantly increase in value over time. It is uncorrelated with other risky assets and provides diversification to a portfolio. And based on Monte Carlo simulations, if added to a portfolio of other risky assets, it can augment returns.  However, it has been a very volatile data series since inception and its future carries a high degree of uncertainty.
 
  
-#### 7. Factors that may affect investor sentiment on BitCoin
+#### 6. Factors that may affect investor sentiment on Bitcoin
 
 Unlike traditional currencies bitcoin is not influenced by monetary policy, inflation rates and other ecomonic metrics that would otherwise influence value of currency. The following factors do influence the bitcoin prices
 
