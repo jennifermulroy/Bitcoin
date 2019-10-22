@@ -134,7 +134,7 @@ In conclusion, Bitcoin has the potential to significantly increase in value over
  
 #### 6. Which factors most signficantly affect investor sentiment on Bitcoin?
 
-Unlike traditional currencies bitcoin is not influenced by monetary policy, inflation rates and other ecomonic metrics that would otherwise influence value of currency. The following factors do influence the bitcoin prices
+ The following factors do influence the bitcoin prices
 
   1.***Bitcoin Supply*** : It is a known fact that Bitcoin supply is capped at 21 million, once it is reached no more bitcoin will be mined. As of January 2017 80 % of the supply is already available. Once the cap is reached then it's value will be determined on how popular and attractive other cryptocurrencies will be.
 
