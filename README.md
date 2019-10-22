@@ -3,7 +3,7 @@
 
 ### Questions explored in this analysis: 
   1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
-  2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
+  2. Is it possible to apply traditional statistical analysis used in analyzing financial security price data series to Bitcoin's trading history?
   3. How does Bitoin’s return and risk profile compare to other risky assets?  
   4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor?
   5. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
@@ -21,7 +21,7 @@
 ![SPY_price_chart](Images/SPY_price_chart_inception.png)
 ![USD_price_chart](Images/USD_price_chart_inception.png)
 
- #### 2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history? 
+ #### 2. Is it possible to apply traditional statistical analysis used in analyzing financial security price data series to Bitcoin's trading history?
  
 Observations:
 In securities analysis, a normal distribution of returns is assumed and sought in order to draw conclusions with a reasonable degree of confidence. We ran a visual plot of Bitcoin's daily returns since July 2010 and compared it against the S&P500, and a highly volatile semiconductor stock, AMD. 
@@ -46,7 +46,9 @@ Observations:
 Bitcoin’s return profile has shown superior absolute returns and risk-adjusted returns since inception and over some of our medium-term observation periods.  However – caveat emptor - as the data series had displayed a parabolic-like price appreciation in earlier years and appears to have been displaying a much different trend following its price peak. 
 
 Conclusion:
-Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis.  
+Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis. 
+
+However, its trend appears to be normalizing and taking on different characteristics in more recent periods.  Bitcoin still remains 58% off of its all-time high as of 10/21/2019, and displays inferior risk-adjusted results on the most recent 1-yr period compared with two of our selected asset classes. Given its extreme parabolic-like price appreciation when using earlier periods as a base, we are skeptical as to whether this dramatic outperformance can be sustainable.  
 
 
 Daily volatility and sharpe ratios over the last five years
