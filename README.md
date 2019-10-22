@@ -44,7 +44,7 @@ We looked at daily volatility, correlation, and the sharpe ratios on a five year
 Observations:
 Bitcoin’s return profile has shown some superior absolute returns and risk-adjusted returns since inception and over some of our medium-term observation periods.  However – caveat emptor - as the data series had displayed a parabolic-like price appreciation in earlier years and appears to have been displaying a much different trend following its price peak. 
 
-Concluion:
+Conclusion:
 Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis.  
 
 
