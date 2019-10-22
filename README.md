@@ -5,8 +5,9 @@
   1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
   2. Is it possible to apply traditional statistical analysis used in financial data to Bitcoin's trading history?
   3. How does Bitoin’s return and risk profile compare to other risky assets?  
-  4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
-  5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
+  4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor?
+  5. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
+  6. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
 
 #### 1. Does Bitcoin's trading prices behavior more closely resemble that of a risky asset class or currency? 
  
@@ -48,45 +49,64 @@ Conclusion:
 Compared with our selected asset classes, Bitcoin has shown the best price appreciation and even risk-adjusted returns as measured by Sharpe ratio since inception and on a 3 and 5 year basis.  
 
 
-Daily volatility, correlation, and sharpe ratios over the last five years
+Daily volatility and sharpe ratios over the last five years
 
  ![five_year_daily_vol](Images/daily_volatility_five.png)
- 
- ![five_year_cor](Images/correlation_five_heatmap.png)
 
 ![five_year_sharpe](Images/sharpe_five_plot.png)
 
 
-Daily volatility, correlation, and sharpe ratios over the last three years
+Daily volatility and sharpe ratios over the last three years
 
  
  ![three_year_daily_vol](Images/daily_volatility_three.png)
  
- ![three_year_cor](Images/correlation_three_heatmap.png)
- 
  ![three_year_sharpe](Images/sharpe_three_plot.png)
 
  
-Daily volatility, correlation, and sharpe ratios over the last year
+Daily volatility and sharpe ratios over the last year
 
  
  ![One_year_daily_vol](Images/daily_volatility_one.png)
  
- ![one_year_cor](Images/correlation_one_heatmap.png)
+ 
   
  ![One_year_sharpe](Images/sharpe_one_plot.png)
 
-Daily volatility, correlation, and sharpe ratios during Bitcoin's peak price period: 10/1/2017-10/1/2018
+Daily volatility and sharpe ratios during Bitcoin's peak price period: 10/1/2017-10/1/2018
 
  
  ![Peak_year_daily_vol](Images/daily_volatility_peak.png)
-
- ![Peak_year_cor](Images/correlation_peak_heatmap.png)
   
  ![Peak_year_sharpe](Images/sharpe_peak_plot.png)
  
 
- #### 4. Are there unique fundamental factors that drive Bitcoin's price, what are they? 
+ #### 4. Is Bitcoin correlated with other asset classes, or is it an idiosyncratic risk factor? 
+ 
+In terms of portfolio theory and portfolio construction, the addition of uncorrelated assets provides very valuable benefits of diversification and risk mitigation.  In fact, one of the most highly sought after and fleeting factors in alternative asset management is idiosyncratic risk.  Is bitcoin correlated with other risky assets and can it be a valuable component when included in a portfolio of risky assets?
+
+Observations:
+We ran cross asset correlations among our selected asset classes over 5, 3, and 1 year periods.  Bitcoin consistently shows very low correlations with all other asset classes.  Its correlations hover around zero with nearly all of our selected asset classes and over nearly all of our selected periods.  It certainly has the lowest correlations with all other asset classes vs. our selections.
+
+Conclusion:
+Bitcoin effectively has no discernible correlation with the range of risky assets we selected and over any of the periods we selected.  Bitcoin appears to be a unique idiosyncratic risk factor; and despite its volatility and uncertain trajectory, would likely provide diversification and hedging benefits if included in a portfolio of risky assets. 
+
+Correlation over a 5 year period
+
+![five_year_cor](Images/correlation_five_heatmap.png)
+
+Correlation over a 3 year period
+
+![three_year_cor](Images/correlation_three_heatmap.png)
+
+Correlation over a 1 year period
+
+![one_year_cor](Images/correlation_one_heatmap.png)
+
+Correlation during Bitcoin's peak price period: 10/1/2017-10/1/2018 
+
+![Peak_year_cor](Images/correlation_peak_heatmap.png)
+
  
  #### 5. Will Bitcoin continue to appreciate in value, and if so, does it add diversification to a portfolio? 
  
