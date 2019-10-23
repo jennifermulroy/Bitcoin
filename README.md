@@ -89,7 +89,7 @@ Daily volatility and sharpe ratios during Bitcoin's peak price period: 10/1/2017
 In terms of portfolio theory and portfolio construction, the addition of uncorrelated assets provides very valuable benefits of diversification and risk mitigation.  In fact, one of the most highly sought after and fleeting factors in alternative asset management is idiosyncratic risk.  Is bitcoin correlated with other risky assets and can it be a valuable component when included in a portfolio of risky assets?
 
 Observations:
-We ran cross asset correlations among our selected asset classes over 5, 3, and 1 year periods.  Bitcoin consistently shows very low correlations with all other asset classes.  Its correlations hover around zero with nearly all of our selected asset classes and over nearly all of our selected periods.  It certainly has the lowest correlations with all other asset classes vs. our selections.
+We ran cross asset correlations among our selected asset classes over 5, 3, and 1 year periods.  Bitcoin consistently shows very low correlations with all other asset classes.  Its correlations hover around zero with nearly all of our selected asset classes and over nearly all of our selected periods.  It certainly has the lowest correlations with all other asset classes vs. our selections. We also found Bitcoin's beta to the S&P 500 over a 5 year period to be 0.04, also indicating it does not follow the S&P500. 
 
 Conclusion:
 Bitcoin effectively has no discernible correlation with the range of risky assets we selected and over any of the periods we selected.  Bitcoin appears to be a unique idiosyncratic risk factor; and despite its volatility and uncertain trajectory, would likely provide diversification and hedging benefits if included in a portfolio of risky assets. 
@@ -109,6 +109,10 @@ Correlation over a 1 year period
 Correlation during Bitcoin's peak price period: 10/1/2017-10/1/2018 
 
 ![Peak_year_cor](Images/correlation_peak_heatmap.png)
+
+Bitcoin's rolling 30 day beta to the S&P 500
+
+![Beta](Images/rolling_btc_beta.png)
 
  
  #### 6. If Bitcoin’s daily trading history were to continue its pattern and purely price movements are a predictor of future results, what is Bitcoin’s expected forward return, and range of outcomes within a given confidence interval? 
